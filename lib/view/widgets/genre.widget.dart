@@ -5,26 +5,31 @@ class GenreWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Chip(
-              backgroundColor: Colors.lightBlue,
-              padding: EdgeInsets.all(10),
-              label: Text("Drama"),
+    return Container(
+      padding: const EdgeInsets.only(left: 10),
+      height: 40,
+      alignment: Alignment.center,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemBuilder: (ctx, index) {
+          return Container(
+            height: 40,
+            child: Row(
+              children: const [
+                Chip(
+                  backgroundColor: Colors.lightBlue,
+                  padding: EdgeInsets.all(10),
+                  label: Text("Drama"),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
             ),
-            SizedBox(
-              width: 10,
-            ),
-            Chip(
-              backgroundColor: Colors.lightBlue,
-              padding: EdgeInsets.all(10),
-              label: Text("Suspense"),
-            ),
-          ],
-        ),
+          );
+        },
+        itemCount: 2,
       ),
     );
   }

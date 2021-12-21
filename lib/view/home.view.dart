@@ -38,11 +38,6 @@ class _HomeViewState extends State<HomeView> {
         title: const Text("TokenLab Film List"),
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await _controller.fetchAll();
-        },
-      ),
       body: _controller.loading
           ? CenteredProgress()
           : Container(

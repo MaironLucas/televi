@@ -8,7 +8,7 @@ import 'package:tokenlab/model/movie.model.dart';
 import 'package:tokenlab/model/movieList.model.dart';
 import 'package:http/http.dart' as http;
 
-class MovieRepository{
+class MovieRepository {
   final Dio _dio = Dio(dioOptions);
   // Future <Either<MovieError,MovieList>> fetchAll() async{
   //   try{
@@ -25,14 +25,16 @@ class MovieRepository{
   //     return Left(MovieRepositoryError(e.toString()));
   //   }
   // }
-  Future <List<Movie>> fetchAll() async{
-    try{
+  Future<List<Movie>> fetchAll() async {
+    try {
       //final response = await _dio.get('');
-      final response = await http.get("https://desafio-mobile.nyc3.digitaloceanspaces.com/movies");
+      final response = await http
+          .get("https://desafio-mobile.nyc3.digitaloceanspaces.com/movies");
       final decoded = jsonDecode(response.body).cast<Map<String, dynamic>>();
-      List<Movie> result = decoded.map<Movie>((x)=> Movie.fromJson(x)).toList();
+      List<Movie> result =
+          decoded.map<Movie>((x) => Movie.fromJson(x)).toList();
       return result;
-    } on Exception catch(e){
+    } on Exception catch (e) {
       throw new Exception(e.toString());
     }
   }
