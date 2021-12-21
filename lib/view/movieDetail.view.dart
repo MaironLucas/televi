@@ -34,21 +34,38 @@ class _MovieDetailViewState extends State<MovieDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Teste"),
-      ),
-      body: _controller.loading
-          ? CenteredProgress()
-          : ListView(
+    return _controller.loading
+        ? Scaffold(appBar: AppBar(title: Text("")), body: CenteredProgress())
+        : Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text(_controller.movie.title),
+            ),
+            body: ListView(
               children: [
-                Image.asset("lib/assets/img2.jpg"),
-                const StatusWidget(),
-                const GenreWidget(),
-                const OverviewWidget()
+                Container(
+                  width: double.infinity,
+                  height: 200,
+                  child: Image.network(
+                    _controller.movie.backdropUrl,
+                    errorBuilder: (context, error, stacktrace) {
+                      return Image.asset("lib/assets/not-found.png");
+                    },
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                StatusWidget(
+                  avgNote: _controller.movie.voteAverage,
+                  date: _controller.movie.releaseDate,
+                ),
+                GenreWidget(
+                  genres: _controller.movie.genres,
+                ),
+                OverviewWidget(
+                  description: _controller.movie.overview,
+                ),
               ],
             ),
-    );
+          );
   }
 }

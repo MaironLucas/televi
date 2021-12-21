@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class GenreWidget extends StatelessWidget {
-  const GenreWidget({Key? key}) : super(key: key);
+  const GenreWidget({Key? key, required this.genres}) : super(key: key);
 
+  final List<String> genres;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,20 +17,20 @@ class GenreWidget extends StatelessWidget {
           return Container(
             height: 40,
             child: Row(
-              children: const [
+              children: [
                 Chip(
                   backgroundColor: Colors.lightBlue,
-                  padding: EdgeInsets.all(10),
-                  label: Text("Drama"),
+                  padding: const EdgeInsets.all(10),
+                  label: Text(genres[index]),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
               ],
             ),
           );
         },
-        itemCount: 2,
+        itemCount: genres.length,
       ),
     );
   }
