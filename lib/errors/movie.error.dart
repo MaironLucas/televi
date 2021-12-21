@@ -1,5 +1,3 @@
-import 'dart:html';
-
 abstract class MovieError implements Exception{
   String message = '';
 

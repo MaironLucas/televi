@@ -6,12 +6,17 @@ import 'package:tokenlab/repositories/movie.repository.dart';
 
 class HomeController{
   final _repository = MovieRepository();
-  late MovieList movieList;
+  late List<Movie> movieList = <Movie>[];
   late MovieError movieError;
   bool loading = true;
 
-  Future<Either<MovieError, MovieList>> fetchAll() async{
+  // Future<Either<MovieError, MovieList>> fetchAll() async{
+  //   final result = await _repository.fetchAll();
+  //   return result;
+  // }
+
+  Future fetchAll() async{
     final result = await _repository.fetchAll();
-    return result;
+    movieList = result;
   }
 }

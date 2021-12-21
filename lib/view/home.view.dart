@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:tokenlab/controller/home.controller.dart';
+import 'package:tokenlab/model/movie.model.dart';
+import 'package:tokenlab/model/movieList.model.dart';
+import 'package:tokenlab/view/widgets/progress.widget.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({ Key? key }) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final _controller = HomeController();
+
+  @override
+  void initState(){
+    super.initState();
+    _init();
+  }
+
+  _init() async{
+    setState(() {
+      _controller.loading = true;
+    });
+    await _controller.fetchAll();
+    setState(() {
+      _controller.loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +37,13 @@ class HomeView extends StatelessWidget {
           title: const Text("TokenLab Film List"),
           centerTitle: true,
         ),
-        body: Container(
+        floatingActionButton: FloatingActionButton(
+          onPressed: ()async {
+            await _controller.fetchAll(); 
+            print(_controller.movieList[0].title.toString());
+          },
+        ),
+        body: _controller.loading ? CenteredProgress() : Container(
           color: Colors.blue,
           child: ListView.builder(
               itemBuilder: (ctx, index) {
@@ -36,19 +69,19 @@ class HomeView extends StatelessWidget {
                           Container(
                             width: 100,
                             height: 150,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage("https://br.web.img3.acsta.net/pictures/17/10/03/20/30/4963404.jpg"),
-                              ),
+                            child: Image.network(_controller.movieList[index].posterUrl,
+                              errorBuilder: (context, error, stacktrace){
+                                return Image.asset("lib/assets/not-found.png");
+                              },
                             ),
                           ),
-                          const Text("Os Sopranos"),
+                          Text(_controller.movieList[index].title),
                         ],
                       ),
                   ),
                 );
               },
-              itemCount: 4,
+              itemCount: _controller.movieList.length,
             ),
           ),
       );
