@@ -11,15 +11,19 @@ class MovieCard extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(15),
+        border: Border.all(
+          color: Theme.of(context).primaryColor,
+          width: 3,
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 100,
-            height: 150,
+            width: 120,
+            height: 180,
             child: Image.network(
               movie.posterUrl,
               errorBuilder: (context, error, stacktrace) {
