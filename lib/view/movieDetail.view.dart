@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tokenlab/controller/detail.controller.dart';
 import 'package:tokenlab/view/widgets/centerMessage.widget.dart';
@@ -51,13 +52,14 @@ class _MovieDetailViewState extends State<MovieDetailView> {
             children: [
               Container(
                 width: double.infinity,
-                height: 200,
-                child: Image.network(
-                  _controller.movie.backdropUrl,
-                  errorBuilder: (context, error, stacktrace) {
-                    return Image.asset("lib/assets/not-found2.jpg");
-                  },
+                height: 220,
+                child: CachedNetworkImage(
+                  memCacheHeight: 220,
+                  memCacheWidth: 1080,
                   fit: BoxFit.cover,
+                  imageUrl: _controller.movie.backdropUrl,
+                  errorWidget: (context, url, error) =>
+                      Image.asset("lib/assets/not-found2.jpg"),
                 ),
               ),
               StatusWidget(

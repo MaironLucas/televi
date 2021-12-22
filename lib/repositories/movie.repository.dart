@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class MovieRepository {
   Future<List<Movie>> fetchAll() async {
     final response =
-        await http.get(baseUrl).timeout(const Duration(seconds: 5));
+        await http.get(Uri.parse(baseUrl)).timeout(const Duration(seconds: 5));
     final decoded = jsonDecode(response.body).cast<Map<String, dynamic>>();
     List<Movie> result = decoded.map<Movie>((x) => Movie.fromJson(x)).toList();
     return result;

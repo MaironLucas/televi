@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:tokenlab/model/productionCompany.model.dart';
 import 'package:tokenlab/model/productionCountry.model.dart';
 import 'package:tokenlab/model/spokenLanguage.model.dart';

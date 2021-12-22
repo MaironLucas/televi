@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'TokenLab Film List',
       debugShowCheckedModeBanner: false,
       theme: myTheme,
-      home: HomeView(),
+      home: const HomeView(),
     );
   }
 }

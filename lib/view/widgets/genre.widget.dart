@@ -19,9 +19,12 @@ class GenreWidget extends StatelessWidget {
             child: Row(
               children: [
                 Chip(
-                  backgroundColor: Colors.lightBlue,
+                  backgroundColor:
+                      Theme.of(context).primaryColor.withOpacity(0.5),
                   padding: const EdgeInsets.all(10),
-                  label: Text(genres[index]),
+                  label: Text(
+                    genres[index],
+                  ),
                 ),
                 const SizedBox(
                   width: 10,

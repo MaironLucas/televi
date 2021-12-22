@@ -14,7 +14,7 @@ class ProductionCompany {
   factory ProductionCompany.fromJson(Map<String, dynamic> json) =>
       ProductionCompany(
         id: json["id"],
-        logoUrl: json["logo_url"],
+        logoUrl: json["logo_url"] ?? "",
         name: json["name"],
         originCountry: json["origin_country"],
       );

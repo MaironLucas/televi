@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tokenlab/model/movie.model.dart';
 
@@ -24,11 +25,12 @@ class MovieCard extends StatelessWidget {
           Container(
             width: 120,
             height: 180,
-            child: Image.network(
-              movie.posterUrl,
-              errorBuilder: (context, error, stacktrace) {
-                return Image.asset("lib/assets/not-found.png");
-              },
+            child: CachedNetworkImage(
+              imageUrl: movie.posterUrl,
+              memCacheHeight: 180,
+              memCacheWidth: 120,
+              errorWidget: (context, url, error) =>
+                  Image.asset("lib/assets/not-found.png"),
             ),
           ),
           const SizedBox(
