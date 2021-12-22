@@ -35,47 +35,49 @@ class _MovieDetailViewState extends State<MovieDetailView> {
   }
 
   _scaffold2Constructor() {
-    if (_controller.loading) {
-      return const CenteredProgress();
-    } else {
-      if (_controller.movieError != '') {
-        return CenterMessage(
+    if (_controller.movieError != '') {
+      return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("..."),
+        ),
+        body: CenterMessage(
           message: _controller.movieError,
-        );
-      } else {
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(_controller.movie.title),
-          ),
-          body: ListView(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 220,
-                child: CachedNetworkImage(
-                  memCacheHeight: 220,
-                  memCacheWidth: 1080,
-                  fit: BoxFit.cover,
-                  imageUrl: _controller.movie.backdropUrl,
-                  errorWidget: (context, url, error) =>
-                      Image.asset("lib/assets/not-found2.jpg"),
-                ),
+        ),
+      );
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(_controller.movie.title),
+        ),
+        body: ListView(
+          children: [
+            Container(
+              width: double.infinity,
+              height: 220,
+              child: CachedNetworkImage(
+                memCacheHeight: 220,
+                memCacheWidth: 1080,
+                fit: BoxFit.cover,
+                imageUrl: _controller.movie.backdropUrl,
+                errorWidget: (context, url, error) =>
+                    Image.asset("lib/assets/not-found2.jpg"),
               ),
-              StatusWidget(
-                avgNote: _controller.movie.voteAverage,
-                date: _controller.movie.releaseDate,
-              ),
-              GenreWidget(
-                genres: _controller.movie.genres,
-              ),
-              OverviewWidget(
-                description: _controller.movie.overview,
-              ),
-            ],
-          ),
-        );
-      }
+            ),
+            StatusWidget(
+              avgNote: _controller.movie.voteAverage,
+              date: _controller.movie.releaseDate,
+            ),
+            GenreWidget(
+              genres: _controller.movie.genres,
+            ),
+            OverviewWidget(
+              description: _controller.movie.overview,
+            ),
+          ],
+        ),
+      );
     }
   }
 

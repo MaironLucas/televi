@@ -16,9 +16,9 @@ class HomeController {
       final result = await _repository.fetchAll();
       movieList = result;
     } on TimeoutException catch (e) {
-      movieError = "Server is not responding!";
+      movieError = "Response time exceeded!";
     } on SocketException catch (e2) {
-      movieError = e2.message.toString();
+      movieError = "Fail to contact remote server!";
     }
   }
 }

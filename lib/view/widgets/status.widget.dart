@@ -17,8 +17,8 @@ class StatusWidget extends StatelessWidget {
           Row(
             children: [
               const Text(
-                "Nota:",
-                style: TextStyle(fontSize: 16),
+                "Grade:",
+                style: TextStyle(fontSize: 18),
               ),
               const SizedBox(
                 width: 8,
@@ -26,14 +26,14 @@ class StatusWidget extends StatelessWidget {
               Text(
                 avgNote.toString(),
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: avgNote > 7 ? Colors.green : Colors.red,
                 ),
               ),
             ],
           ),
           Chip(
-              backgroundColor: Colors.yellow.withOpacity(0.4),
+              backgroundColor: Colors.red.withOpacity(0.6),
               padding: const EdgeInsets.all(10),
               avatar: const Icon(Icons.calendar_today, size: 16),
               label: Text(

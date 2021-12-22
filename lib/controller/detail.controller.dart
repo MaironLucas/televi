@@ -16,9 +16,9 @@ class DetailController {
       final result = await _repository.fetchMovie(id);
       movie = result;
     } on TimeoutException catch (e) {
-      movieError = 'Server is not responding!';
+      movieError = "Response time exceeded!";
     } on SocketException catch (e) {
-      movieError = e.message;
+      movieError = "Fail to contact remote server!";
     }
   }
 }
