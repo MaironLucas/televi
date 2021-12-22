@@ -13,7 +13,7 @@ class CenterMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.max,
         children: [
-          const Icon(Icons.warning, color: Colors.black, size: 64.0),
+          const Icon(Icons.warning, size: 64.0),
           const SizedBox(
             height: 10.0,
           ),
