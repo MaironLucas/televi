@@ -1,22 +1,24 @@
-import 'package:dartz/dartz.dart';
-import 'package:tokenlab/errors/movie.error.dart';
+import 'dart:async';
+import 'dart:io';
+
 import 'package:tokenlab/model/movie.model.dart';
-import 'package:tokenlab/model/movieList.model.dart';
 import 'package:tokenlab/repositories/movie.repository.dart';
 
-class HomeController{
+class HomeController {
   final _repository = MovieRepository();
   late List<Movie> movieList = <Movie>[];
-  late MovieError movieError;
+  late String movieError;
   bool loading = true;
 
-  // Future<Either<MovieError, MovieList>> fetchAll() async{
-  //   final result = await _repository.fetchAll();
-  //   return result;
-  // }
-
-  Future fetchAll() async{
-    final result = await _repository.fetchAll();
-    movieList = result;
+  Future fetchAll() async {
+    try {
+      movieError = '';
+      final result = await _repository.fetchAll();
+      movieList = result;
+    } on TimeoutException catch (e) {
+      movieError = "Server is not responding!";
+    } on SocketException catch (e2) {
+      movieError = e2.message.toString();
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:tokenlab/controller/home.controller.dart';
 import 'package:tokenlab/model/movie.model.dart';
 import 'package:tokenlab/model/movieList.model.dart';
 import 'package:tokenlab/view/widgets/cardGenerator.widget.dart';
+import 'package:tokenlab/view/widgets/centerMessage.widget.dart';
 import 'package:tokenlab/view/widgets/progress.widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -31,6 +32,25 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
+  _bodyConstructor() {
+    if (_controller.loading) {
+      return const CenteredProgress();
+    } else {
+      if (_controller.movieError != '') {
+        return CenterMessage(
+          message: _controller.movieError,
+        );
+      } else {
+        return Container(
+          color: Theme.of(context).backgroundColor,
+          child: CardGenerator(
+            controller: _controller,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +58,7 @@ class _HomeViewState extends State<HomeView> {
         title: const Text("TokenLab Film List"),
         centerTitle: true,
       ),
-      body: _controller.loading
-          ? CenteredProgress()
-          : Container(
-              color: Theme.of(context).backgroundColor,
-              child: CardGenerator(
-                controller: _controller,
-              ),
-            ),
+      body: _bodyConstructor(),
     );
   }
 }

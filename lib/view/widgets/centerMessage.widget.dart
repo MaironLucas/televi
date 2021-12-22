@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CenterMessage extends StatelessWidget {
-  const CenterMessage({ Key? key }) : super(key: key);
+  const CenterMessage({Key? key, required this.message}) : super(key: key);
 
+  final String message;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,17 +12,14 @@ class CenterMessage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.max,
-        children: const [
-          Icon(
-            Icons.warning,
-            color: Colors.black,
-            size: 64.0
+        children: [
+          const Icon(Icons.warning, color: Colors.black, size: 64.0),
+          const SizedBox(
+            height: 10.0,
           ),
-          SizedBox(height: 10.0,),
           Text(
-            "Erro",
+            message,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.black),
           ),
         ],
       ),

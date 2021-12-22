@@ -31,11 +31,20 @@ class MovieCard extends StatelessWidget {
               },
             ),
           ),
-          Text(
-            movie.title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+          const SizedBox(
+            width: 5,
+          ),
+          Container(
+            width: 170,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              movie.title,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
