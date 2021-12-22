@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tokenlab/controller/home.controller.dart';
-import 'package:tokenlab/model/movie.model.dart';
-import 'package:tokenlab/model/movieList.model.dart';
 import 'package:tokenlab/view/widgets/cardGenerator.widget.dart';
 import 'package:tokenlab/view/widgets/centerMessage.widget.dart';
 import 'package:tokenlab/view/widgets/progress.widget.dart';

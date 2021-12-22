@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tokenlab/controller/detail.controller.dart';
+import 'package:tokenlab/view/widgets/centerMessage.widget.dart';
 import 'package:tokenlab/view/widgets/genre.widget.dart';
 import 'package:tokenlab/view/widgets/overview.widget.dart';
 import 'package:tokenlab/view/widgets/progress.widget.dart';
@@ -32,40 +33,56 @@ class _MovieDetailViewState extends State<MovieDetailView> {
     });
   }
 
+  _scaffold2Constructor() {
+    if (_controller.loading) {
+      return const CenteredProgress();
+    } else {
+      if (_controller.movieError != '') {
+        return CenterMessage(
+          message: _controller.movieError,
+        );
+      } else {
+        return Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(_controller.movie.title),
+          ),
+          body: ListView(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200,
+                child: Image.network(
+                  _controller.movie.backdropUrl,
+                  errorBuilder: (context, error, stacktrace) {
+                    return Image.asset("lib/assets/not-found2.jpg");
+                  },
+                  fit: BoxFit.cover,
+                ),
+              ),
+              StatusWidget(
+                avgNote: _controller.movie.voteAverage,
+                date: _controller.movie.releaseDate,
+              ),
+              GenreWidget(
+                genres: _controller.movie.genres,
+              ),
+              OverviewWidget(
+                description: _controller.movie.overview,
+              ),
+            ],
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return _controller.loading
-        ? Scaffold(appBar: AppBar(title: Text("")), body: CenteredProgress())
-        : Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text(_controller.movie.title),
-            ),
-            body: ListView(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                  child: Image.network(
-                    _controller.movie.backdropUrl,
-                    errorBuilder: (context, error, stacktrace) {
-                      return Image.asset("lib/assets/not-found.png");
-                    },
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                StatusWidget(
-                  avgNote: _controller.movie.voteAverage,
-                  date: _controller.movie.releaseDate,
-                ),
-                GenreWidget(
-                  genres: _controller.movie.genres,
-                ),
-                OverviewWidget(
-                  description: _controller.movie.overview,
-                ),
-              ],
-            ),
-          );
+        ? Scaffold(
+            appBar: AppBar(title: const Text("")),
+            body: const CenteredProgress())
+        : _scaffold2Constructor();
   }
 }
