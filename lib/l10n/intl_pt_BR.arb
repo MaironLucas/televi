@@ -1,0 +1,17 @@
+{
+    "@@locale": "pt_BR",
+    "homePageTitle": "Lista de filmes",
+    "tabBarMovies": "Filmes",
+    "tabBarFavorites": "Favoritos",
+    "responseError": "Ocorreu um erro no servidor, falha ao processar informações!",
+    "timeoutError": "Falha de comunicação com o servidor, verifique sua conexão!",
+    "unknowError": "Ocorreu uma falha desconhecida!",
+    "tryAgain": "Tentar Novamente",
+    "grade": "Nota",
+    "favoritesAppBar": "Favoritos",
+    "favoritesMessage": "Nada para ver por aqui, tente adicionar alguns filmes a sua lista de favoritos!",
+    "snackbarFavoriteSuccess": "Adicionado a lista de favoritos!",
+    "snackbarUnFavoriteSuccess": "Removido da lista de favoritos!",
+    "snackbarFavoriteFetchError": "Ocorreu um erro ao carregar status de favorito!",
+    "snackbarFavoriteChangeError": "Ocorreu um erro ao favoritar/desfavoritar"
+}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1014053372918",
+    "project_id": "flutter-film-list",
+    "storage_bucket": "flutter-film-list.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014053372918:android:e858a4cd1dfce3ebfcbdd7",
+        "android_client_info": {
+          "package_name": "com.my.filmlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014053372918-pb4rmkmn5ho3ntiuuf7tc10umdr3c5g6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbdAZnstdjXyq0iEpjRRzwlDW-IvLooSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014053372918-pb4rmkmn5ho3ntiuuf7tc10umdr3c5g6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

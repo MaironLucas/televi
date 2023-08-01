@@ -1,0 +1,17 @@
+{
+    "@@locale": "en_US",
+    "homePageTitle": "My Film List",
+    "tabBarMovies": "Movies",
+    "tabBarFavorites": "Favorites",
+    "responseError": "An error occured, failure to process information!",
+    "timeoutError": "Communication failure with the server, check your network connection!",
+    "unknowError": "An unknown failure has occurred!",
+    "tryAgain": "Try Again",
+    "grade": "Grade",
+    "favoritesAppBar": "Favorites",
+    "favoritesMessage": "Nothing to see here, try adding some movies to your favorites list!",
+    "snackbarFavoriteSuccess": "Added to favorites list!",
+    "snackbarUnFavoriteSuccess": "Removed from favorites list!",
+    "snackbarFavoriteFetchError": "An error occured on loading favorite status!",
+    "snackbarFavoriteChangeError": "An error occured on favorite/unfavorite!"
+}
